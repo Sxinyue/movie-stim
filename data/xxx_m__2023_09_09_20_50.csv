@@ -1,0 +1,4 @@
+name,gender,age,hair length
+xxx,m,18,short
+trial_id,valence,arousal,happy,neutral,sad
+0,2,5,3,2,4
