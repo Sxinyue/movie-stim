@@ -6,16 +6,16 @@ from psychopy import gui, visual, event, clock, core
 
 if __name__ == '__main__':
 
-    # socket
-    ip = '127.0.0.1'
-    port = 9999
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(1)
-    try:
-        s.connect((ip, port))
-    except Exception as e:
-        print('服务器不在线')
-        sys.exit()
+    # # socket
+    # ip = '127.0.0.1'
+    # port = 9999
+    # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # s.settimeout(1)
+    # try:
+    #     s.connect((ip, port))
+    # except Exception as e:
+    #     print('服务器不在线')
+    #     sys.exit()
     # Ensure that relative paths start from the same directory as this script
     _thisDir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(_thisDir)
@@ -97,15 +97,15 @@ if __name__ == '__main__':
             core.quit()
         video = visual.MovieStim(win, video_path.format(trial), size=(2560, 1440))
 
-        s.send('1'.encode('utf-8'))
-        print('开始的发送时间{}'.format(time.time()))
+        # s.send('1'.encode('utf-8'))
+        # print('开始的发送时间{}'.format(time.time()))
         fixation_beg.draw()
         win.flip()
         clock.wait(5)  # 5s fixation
 
-        trigger_start = '2'
-        s.send(trigger_start.encode('utf-8'))
-        print('video开始的发送时间{}'.format(time.time()))
+        # trigger_start = '2'
+        # s.send(trigger_start.encode('utf-8'))
+        # print('video开始的发送时间{}'.format(time.time()))
         while video.status != visual.FINISHED:
             video.draw()
             win.flip()
@@ -113,9 +113,9 @@ if __name__ == '__main__':
             if event.getKeys(keyList=['escape']):
                 video.pause()
                 break
-        trigger_end = '3'
-        s.send(trigger_end.encode('utf-8'))
-        print('video结束的发送时间{}'.format(time.time()))
+        # trigger_end = '3'
+        # s.send(trigger_end.encode('utf-8'))
+        # print('video结束的发送时间{}'.format(time.time()))
 
         scale_valence.reset()
         scale_arousal.reset()
@@ -168,6 +168,6 @@ if __name__ == '__main__':
             text_end.draw()
             win.flip()
             clock.wait(15)
-    end_data = '9'
-    s.send(end_data.encode('utf-8'))
-    s.close()
+    # end_data = '9'
+    # s.send(end_data.encode('utf-8'))
+    # s.close()
